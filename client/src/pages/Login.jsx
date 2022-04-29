@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -56,7 +57,7 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const Linkk = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -65,6 +66,15 @@ const Link = styled.a`
 
 const Error = styled.span`
   color: red;
+`;
+
+const Top = styled.button`
+  width: 100%;
+  border: none;
+  padding: 15px 20px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
 `;
 
 const Login = () => {
@@ -78,28 +88,33 @@ const Login = () => {
     login(dispatch, { username, password });
   };
   return (
-    <Container>
-      <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form>
-          <Input
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            placeholder="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button onClick={handleClick} disabled={isFetching}>
-            LOGIN
-          </Button>
-          {error && <Error>Something went wrong...</Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
-        </Form>
-      </Wrapper>
-    </Container>
+    <div>
+      <Link to="/">
+        <Top>Home Page</Top>
+      </Link>
+      <Container>
+        <Wrapper>
+          <Title>SIGN IN</Title>
+          <Form>
+            <Input
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button onClick={handleClick} disabled={isFetching}>
+              LOGIN
+            </Button>
+            {error && <Error>Something went wrong...</Error>}
+            <Linkk>DO NOT YOU REMEMBER THE PASSWORD?</Linkk>
+            <Linkk>CREATE A NEW ACCOUNT</Linkk>
+          </Form>
+        </Wrapper>
+      </Container>
+    </div>
   );
 };
 

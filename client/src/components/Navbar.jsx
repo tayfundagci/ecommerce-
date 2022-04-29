@@ -86,7 +86,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <Link to="/">
-            <Logo>tdagci-</Logo>
+            <Logo>tdagci</Logo>
           </Link>
         </Center>
         <Right>
